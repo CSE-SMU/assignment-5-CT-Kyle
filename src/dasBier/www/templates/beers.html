@@ -1,23 +1,13 @@
 <ion-view view-title="Beers">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/beers/{{playlist.id}}">
-<!--
-        {{playlist.labels.medium}}
-        {{playlist.nameDisplay}}
--->
-
-    <a class="item item-thumbnail-left" href="#/app/beers/:id"> <!--when you click it goes to the selected beer page -->
+      <ion-item ng-click="getBeerDetails(playlist)" ng-repeat="playlist in playlists">
+    <a class="item item-thumbnail-left"> <!--when you click it goes to the selected beer page -->
       <img src= {{playlist.labels.icon}}>
       <h2>{{playlist.nameDisplay}}</h2>
     </a>
-            
-<!--
- <div class="item item-image">
-        <img src={{playlist.labels.large}}>
-    </div>
--->
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
+

@@ -1,7 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
+.controller('AppCtrl', function($scope, $state, $ionicModal, $timeout) {
+    $scope.phoneHome = function(){
+        $state.go('app.search');
+    };
 })
 .controller('SearchCtrl', function($scope, $state, $http, BeerData) {
     $scope.form = {};
@@ -25,14 +27,12 @@ angular.module('starter.controllers', [])
     $http({
       method: 'GET',
       url: 'https://salty-taiga-88147.herokuapp.com/beers',
-
       params: parms,
       
     }).then(function successCallback(response) {
         // this callback will be called asynchronously
         // when the response is available
         BeerData.data = response.data;
-        //console.log(BeerData.data);
         
         $state.go('app.beers');
       }, function errorCallback(response) {
@@ -46,16 +46,25 @@ angular.module('starter.controllers', [])
 .factory('BeerData', function(){
     return {data: {}};
 })
+.factory('IndieBeerData', function(){
+  return {data: {}};
+})
 
-.controller('BeersCtrl', function($scope, BeerData) {
+.controller('BeersCtrl', function($scope, $state, BeerData, IndieBeerData) {
   console.log(BeerData.data)
   //change the playlists to display the data from BeerData.data
   $scope.playlists = BeerData.data.data;
+  $scope.getBeerDetails = function(playlist) {
+      IndieBeerData.data = playlist;
+      console.log('Before passing data');
+      $state.go('app.beer');
+  }
 })
 
-.controller('BeerCtrl', function($scope, $stateParams, BeerData) {
-    //this will let you see the id of the beer that you have selected
+.controller('BeerCtrl', function($scope, $state, $stateParams, BeerData, IndieBeerData) {
+    $scope.beerDetails = IndieBeerData.data;
     console.log("BeerCtrl activated");
-    console.log(BeerData.data.data)
-    console.log($stateParams.id);
+    console.log(IndieBeerData);
+    console.log(IndieBeerData.data.nameDisplay);
+    console.log(IndieBeerData.data.id);
 });

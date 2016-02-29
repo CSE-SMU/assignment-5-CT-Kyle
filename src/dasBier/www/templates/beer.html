@@ -1,31 +1,19 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Beer Details">
   <ion-content>
-      {{playlist.nameDisplay}}
     <h1>Your Perfect Beer!</h1>
       <div class="list card">
-
-<!--
-  <div class="item item-avatar">
-    <img src="mcfly.jpg">
-    <h2>Marty McFly</h2>
-    <p>November 05, 1955</p>
-  </div>
--->
-
-  <div class="item item-body">
-      <h1>BLARG</h1>
-    <img class="full-image" src="{{labels.large}}">
-    <p>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-      the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
-    </p>
-    <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
-  </div>
-
-</div>
+         <div class="item item-body">
+             <h1>{{beerDetails.nameDisplay}}</h1>
+           <img class="image" src="{{beerDetails.labels.large}}">
+           <h2>Description: </h2>{{beerDetails.description}}
+             <div>Year: {{beerDetails.year}}</div>
+             <div>IBU: {{beerDetails.ibu}}</div>
+             <div>ABV: {{beerDetails.abv}}</div>
+             <div>Organic: {{beerDetails.isOrganic}}</div>
+             <div>Glassware: {{beerDetails.glass.name}}</div>
+             <div>Style of Beer: {{beerDetails.style.name}}</div>
+             <div>Description of Style: {{beerDetails.style.description}}</div>  
+         </div>
+      </div>
   </ion-content>
 </ion-view>
