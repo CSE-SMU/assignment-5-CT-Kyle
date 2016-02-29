@@ -1,0 +1,38 @@
+<ion-view view-title="Search">
+  <ion-content>
+    <h1>Welcome to dasBier! Find the beer that suits your needs!</h1>
+    <div class="list list-inset">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Beer Name" ng-model="form.name">
+        </label>
+        <label class="item2 item-input">
+            <i class="icon ion-calendar placeholder-icon"></i>
+            <input type="number" placeholder="Year of Beer" ng-model="form.year">
+        </label>
+        
+        <div class="item range range-energized">
+            <div class="range-label"> IBU </div>
+            <i class="icon ion-ios-bolt-outline"></i>
+            <input type="range" name="ibu" min="0" max="100" ng-model=form.ibu>
+            <i class="icon ion-ios-bolt"></i>
+            <div>{{form.ibu}}</div>
+        </div>
+        <div class="item range range-assertive">
+            <div class="range-label"> ABV </div>
+            <i class="icon ion-sad-outline"></i>
+            <input type="range" name="abv" min="0" max="15" ng-model=form.abv>
+            <i class="icon ion-happy-outline"></i>
+            <div>{{form.abv}}</div>
+        </div>
+
+
+    <ion-toggle ng-model="form.organic" toggle-class="toggle-balanced">Organic</ion-toggle>
+
+    </div>
+  </ion-content>
+    <div class="bar bar-footer bar-balanced" ng-click="search()">
+        <div class="title">Search</div>
+    </div>
+</ion-view>
+
